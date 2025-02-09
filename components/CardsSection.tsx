@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react";
-import { useScroll, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import CardColumn from "./CardColumn";
 import { createColumns } from "@/utils/cardUtils";
 import { cards } from "@/data/cards";
@@ -9,10 +9,6 @@ import { cards } from "@/data/cards";
 const CardsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const columns = createColumns(cards);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
 
   return (
     <div className="relative min-h-[500vh] bg-gradient-to-b from-background to-secondary" ref={containerRef}>
