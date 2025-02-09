@@ -85,34 +85,6 @@ export const cards: Card[] = [
     image:
       "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
   },
-  {
-    id: 13,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
-  },
-  {
-    id: 14,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
-  },
-  {
-    id: 15,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
-  },
-  {
-    id: 16,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
-  },
 ];
 
 const services = [

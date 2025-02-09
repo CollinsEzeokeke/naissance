@@ -78,7 +78,7 @@ const CardsSection = () => {
         </motion.h1>
       </div>
       
-      <div className="flex justify-center h-full w-full bg-yellow-500">
+      <div className="flex justify-center h-full w-full">
       <div className="relative perspective-1000">
         {columns.map((columnCards, columnIndex) => (
           <CardColumn 
