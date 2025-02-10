@@ -51,6 +51,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.nostraforma.com",
       },
+      {
+        protocol: "https",
+        hostname: "pinoyhousedesigns.com",
+      },
     ],
   },
 };

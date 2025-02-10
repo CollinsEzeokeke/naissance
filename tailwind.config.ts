@@ -64,6 +64,7 @@ const config: Config = {
       animation: {
         float: "float 5s ease-in-out infinite",
         zoomIn: "zoomIn 0.3s ease-out forwards",
+        "subtle-pulse": "subtle-pulse 4s ease-in-out infinite",
       },
     },
   },
