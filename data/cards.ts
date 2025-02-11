@@ -34,7 +34,7 @@ export const cards: Card[] = [
     title: "Smart Home Integration",
     description: "Cutting-edge home automation solutions",
     image:
-      "https://images.unsplash.com/photo-1558002038-bb4237b50b11?q=80&w=400&h=300&fit=crop",
+      "https://www.excelo.pl/wp-content/uploads/2023/05/adobestock_586555846-scaled.jpeg",
   },
   {
     id: 6,

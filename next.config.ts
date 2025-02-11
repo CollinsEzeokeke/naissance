@@ -59,6 +59,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "media.cntraveler.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.excelo.pl",
+      },
     ],
   },
 };

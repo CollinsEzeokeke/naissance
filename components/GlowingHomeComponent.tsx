@@ -65,7 +65,7 @@ export default function GlowingHomeComponent() {
                   src="/happy-home.png"
                   alt="Happy Home"
                   layout="fill"
-                  objectFit="cover"
+                  // objectFit="cover"
                   className="rounded-lg"
                 />
               </motion.div>
@@ -76,7 +76,7 @@ export default function GlowingHomeComponent() {
                   src="https://pinoyhousedesigns.com/wp-content/uploads/2017/10/GL000.jpg"
                   alt="Interior Home"
                   layout="fill"
-                  objectFit="cover"
+                  // objectFit="cover"
                   className="rounded-lg"
                 />
                 <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-40" />
@@ -90,8 +90,8 @@ export default function GlowingHomeComponent() {
                   <div className="bg-black/40 rounded-tl-lg p-6">
                     <blockquote className="text-white">
                       <p className="text-lg md:text-xl italic mb-2 leading-relaxed">
-                        &quot;A house is a place, a home is a people, we come home to
-                        people not to places&quot;
+                        &quot;A house is a place, a home is a people, we come
+                        home to people not to places&quot;
                       </p>
                       <footer className="text-sm md:text-base text-gray-300 text-right mt-3">
                         — <cite>Elon Musk</cite>

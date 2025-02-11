@@ -9,9 +9,9 @@ import { cards } from "@/data/cards";
 const CardsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const columns = createColumns(cards);
-
+  // bg-gradient-to-b from-background to-secondary
   return (
-    <div className="relative min-h-[500vh] bg-gradient-to-b from-background to-secondary" ref={containerRef}>
+    <div className="relative min-h-[500vh] bg-red-500 pb-0 pt-0" ref={containerRef}>
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_120%,hsl(var(--primary)/0.1),transparent)]" />
       
       <div className="relative h-[50vh] flex flex-col items-center justify-center">
