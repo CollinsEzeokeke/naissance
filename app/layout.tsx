@@ -12,7 +12,7 @@ export default function RootLayout({
       <head />
       <body className="overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
+           {children}
         </ThemeProvider>
       </body>
     </html>
