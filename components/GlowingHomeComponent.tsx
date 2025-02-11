@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import TextGradientScroll from "./ui/scrollGradient";
 
 export default function GlowingHomeComponent() {
@@ -13,7 +13,7 @@ export default function GlowingHomeComponent() {
   }, []);
 
   return (
-    <motion.section
+    (<motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 1.5 }}
@@ -64,10 +64,10 @@ export default function GlowingHomeComponent() {
                 <Image
                   src="/happy-home.png"
                   alt="Happy Home"
-                  layout="fill"
                   // objectFit="cover"
                   className="rounded-lg"
-                />
+                  fill
+                  sizes="100vw" />
               </motion.div>
 
               {/* Second Image - This stays static */}
@@ -75,10 +75,10 @@ export default function GlowingHomeComponent() {
                 <Image
                   src="https://pinoyhousedesigns.com/wp-content/uploads/2017/10/GL000.jpg"
                   alt="Interior Home"
-                  layout="fill"
                   // objectFit="cover"
                   className="rounded-lg"
-                />
+                  fill
+                  sizes="100vw" />
                 
                 <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-40" />
 
@@ -106,7 +106,7 @@ export default function GlowingHomeComponent() {
         </div>
       </div>
       <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 animate-subtle-pulse" />
-    </motion.section>
+    </motion.section>)
   );
 }
 

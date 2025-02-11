@@ -176,7 +176,7 @@
 
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { NavBar } from "./nav-bar";
 import { PlayCircle } from "lucide-react";
@@ -229,7 +229,7 @@ const AnimatedIcon = ({ src, alt }: { src: string; alt: string }) => {
   const floatingY = useFloatingAnimation();
 
   return (
-    <motion.div
+    (<motion.div
       ref={ref}
       className="relative h-12 w-12 md:h-16 md:w-16" // Modified sizes for better mobile display
       animate={{
@@ -249,11 +249,14 @@ const AnimatedIcon = ({ src, alt }: { src: string; alt: string }) => {
         alt={alt}
         fill
         className="dark:invert object-contain"
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <span className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap text-white px-2 py-1 rounded text-xs md:text-sm">
         {alt}
       </span>
-    </motion.div>
+    </motion.div>)
   );
 };
 
@@ -261,11 +264,10 @@ export function HeroSection() {
   const floatingY = useFloatingAnimation(5, 20);
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-background transition-colors duration-300">
+    (<div className="relative min-h-screen w-full overflow-hidden bg-background transition-colors duration-300">
       <div className="absolute inset-0 z-0">
         <Boxes />
       </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <NavBar />
         <div className="mt-8 md:mt-16 flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12">
@@ -343,11 +345,14 @@ export function HeroSection() {
                 fill
                 className="object-cover rounded-lg transition-all duration-300 ease-in-out"
                 priority
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </div>)
   );
 }
