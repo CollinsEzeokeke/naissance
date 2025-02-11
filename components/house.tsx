@@ -4,13 +4,13 @@ import type { GLTF } from "three-stdlib";
 
 type PlantProps = {
   scale?: number | [number, number, number];
-  position? : [number, number, number]
+  position?: [number, number, number];
 };
 type GLTFResult = GLTF & {
   nodes: {
     home1: THREE.Mesh;
   };
-  materials: {}; // Update with actual material types if needed
+  materials: Record<string, unknown>;
 };
 
 export function Model(props: PlantProps) {

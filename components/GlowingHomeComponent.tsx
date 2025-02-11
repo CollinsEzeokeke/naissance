@@ -90,8 +90,8 @@ export default function GlowingHomeComponent() {
                   <div className="bg-black/40 rounded-tl-lg p-6">
                     <blockquote className="text-white">
                       <p className="text-lg md:text-xl italic mb-2 leading-relaxed">
-                        "A house is a place, a home is a people, we come home to
-                        people not to places"
+                        &quot;A house is a place, a home is a people, we come home to
+                        people not to places&quot;
                       </p>
                       <footer className="text-sm md:text-base text-gray-300 text-right mt-3">
                         — <cite>Elon Musk</cite>

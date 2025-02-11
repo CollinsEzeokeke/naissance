@@ -34,10 +34,14 @@ export const AnimatedTestimonials = ({
 
   useEffect(() => {
     if (autoplay) {
+      const handleNext = () => {
+        setActive((prev) => (prev + 1) % testimonials.length);
+      };
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay]);
+}, [autoplay, testimonials.length]);
+
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;

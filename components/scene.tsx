@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { ContactShadows, OrbitControls } from "@react-three/drei";
 import { Model } from "./house";
-import { motion } from "framer-motion";
 export function DisplayHome() {
   return (
     <div className="w-full h-full">
