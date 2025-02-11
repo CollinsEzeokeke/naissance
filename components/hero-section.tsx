@@ -176,7 +176,7 @@
 
 "use client";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Button } from "@/components/ui/button";
 import { NavBar } from "./nav-bar";
 import { PlayCircle } from "lucide-react";

@@ -136,10 +136,10 @@ export const CardItem = ({
 
   return (
     // @ts-expect-error - Component works in development, type issues with material props
-    <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}
+    (<Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}
     >
       {children}
-    </Tag>
+    </Tag>)
   );
 };
 
