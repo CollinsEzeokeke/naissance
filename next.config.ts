@@ -55,6 +55,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "pinoyhousedesigns.com",
       },
+      {
+        protocol: "https",
+        hostname: "media.cntraveler.com",
+      },
     ],
   },
 };
