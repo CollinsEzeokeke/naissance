@@ -79,6 +79,7 @@ export default function GlowingHomeComponent() {
                   // objectFit="cover"
                   className="rounded-lg"
                 />
+                
                 <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-40" />
 
                 <div className="absolute inset-x-0 top-0 pt-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-[20vh]">
