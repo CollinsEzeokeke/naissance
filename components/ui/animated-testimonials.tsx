@@ -40,14 +40,13 @@ export const AnimatedTestimonials = ({
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-}, [autoplay, testimonials.length]);
-
+  }, [autoplay, testimonials.length]);
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
-    (<div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-20">
+    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-20">
       <div className="relative grid grid-cols-1 md:grid-cols-2  gap-20">
         <div>
           <div className="relative h-80 w-full">
@@ -90,10 +89,7 @@ export const AnimatedTestimonials = ({
                     height={500}
                     draggable={false}
                     className="h-full w-full rounded-3xl object-cover object-center"
-                    style={{
-                      maxWidth: "100%",
-                      height: "auto"
-                    }} />
+                  />
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -167,6 +163,6 @@ export const AnimatedTestimonials = ({
           </div>
         </div>
       </div>
-    </div>)
+    </div>
   );
 };
