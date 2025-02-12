@@ -14,7 +14,7 @@ export function NavBar() {
         <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
           Features
         </Link>
-        <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+        <Link href="/gallery" className="text-sm text-muted-foreground hover:text-foreground">
           Gallery
         </Link>
         <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
