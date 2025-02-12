@@ -146,6 +146,8 @@ const Index = () => {
     setIsLoaded(true);
   }, []);
 
+  console.log(isLoaded,showAllHomes)
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -196,7 +198,7 @@ const Index = () => {
           <p className="max-w-2xl mx-auto mb-8 text-xl text-muted-foreground">
             Begin your{" "}
             <span className="text-primary font-semibold">Build Journey</span>{" "}
-            today and discover the stories of families who've built their dreams
+            today and discover the stories of families who&apos;ve built their dreams
             with us
           </p>
           <div className="flex items-center justify-center gap-2 mb-8">
@@ -397,7 +399,7 @@ const Index = () => {
               Why Choose Us
             </h2>
             <p className="text-xl text-muted-foreground">
-              Building more than just houses - we're building futures
+              Building more than just houses - we&apos;re building futures
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
