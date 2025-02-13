@@ -91,3 +91,30 @@
   animation: subtle-pulse 4s ease-in-out infinite;
 }
 
+
+
+.corner-effect {
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0.0175rem;
+    left: -1.25rem;
+    background: transparent;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    box-shadow: 0.313rem 0.313rem 0 0.313rem #020817;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1.25rem;
+    right: 0.0175rem;
+    background: transparent;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+    box-shadow: 0.313rem 0.313rem 0 0.313rem #020817;
+  }
+}

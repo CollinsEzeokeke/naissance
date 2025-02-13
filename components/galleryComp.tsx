@@ -9,8 +9,10 @@ import {
   ChevronRight,
   Building,
   Shield,
+  ArrowUpRight,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { WorldMapDemo } from "./worldJam";
 
 interface HomeCard {
   id: number;
@@ -146,7 +148,7 @@ const Index = () => {
     setIsLoaded(true);
   }, []);
 
-  console.log(isLoaded,showAllHomes)
+  console.log(isLoaded, showAllHomes);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -198,8 +200,8 @@ const Index = () => {
           <p className="max-w-2xl mx-auto mb-8 text-xl text-muted-foreground">
             Begin your{" "}
             <span className="text-primary font-semibold">Build Journey</span>{" "}
-            today and discover the stories of families who&apos;ve built their dreams
-            with us
+            today and discover the stories of families who&apos;ve built their
+            dreams with us
           </p>
           <div className="flex items-center justify-center gap-2 mb-8">
             <motion.div
@@ -254,9 +256,15 @@ const Index = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="py-16 bg-card"
+        className="py-16 bg-card relative h-[50vh]" // Changed to relative positioning and set fixed height
       >
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Background Map Component */}
+        <div className="absolute inset-0 w-full h-full">
+          <WorldMapDemo />
+        </div>
+
+        {/* Stats Grid Overlay */}
+        <div className="relative grid grid-cols-1 -mx-7 md:grid-cols-3 gap-8 w-full h-full z-10">
           <motion.div whileHover={{ scale: 1.05 }} className="text-center p-6">
             <h3 className="text-4xl font-bold text-primary mb-2">1,000+</h3>
             <p className="text-muted-foreground">Happy Families</p>
@@ -271,6 +279,7 @@ const Index = () => {
           </motion.div>
         </div>
       </motion.section>
+      <div className="h-[50vh]" />
 
       <motion.section
         initial={{ opacity: 0 }}
@@ -297,7 +306,9 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <motion.div
+          {/* motions rerenderer constantly........ */}
+
+          {/* <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -312,7 +323,7 @@ const Index = () => {
                   scale: 1.03,
                   transition: { duration: 0.2 },
                 }}
-                className={`group relative overflow-hidden rounded-lg shadow-lg bg-card ${
+                className={`group relative overflow-hidden rounded-lg shadow-lg bg-background ${
                   index % 6 === 0
                     ? "md:col-span-4 md:row-span-2"
                     : index % 6 === 1 || index % 6 === 2
@@ -330,39 +341,102 @@ const Index = () => {
                       ? "h-64 md:h-[32rem]"
                       : "h-64"
                   }`}
+                > */}
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-6 gap-8 auto-rows-auto"
+          >
+            {displayedHomes.map((home, index) => {
+              // Calculate the position within each group of 6
+              const groupIndex = Math.floor(index / 6);
+              const positionInGroup = index % 6;
+
+              // Determine if this is an odd or even group
+              const isOddGroup = groupIndex % 2 === 1;
+
+              // Define the layout classes based on position
+              let layoutClasses = "";
+              if (isOddGroup) {
+                // Odd groups: large image on right, small ones on left
+                if (positionInGroup === 3) {
+                  layoutClasses = "md:col-span-4 md:row-span-2"; // Large image
+                } else if (positionInGroup === 4 || positionInGroup === 5) {
+                  layoutClasses = "md:col-span-2 md:col-start-1"; // Small images on left
+                }
+              } else {
+                // Even groups: large image on left, small ones on right
+                if (positionInGroup === 0) {
+                  layoutClasses = "md:col-span-4 md:row-span-2"; // Large image
+                } else if (positionInGroup === 1 || positionInGroup === 2) {
+                  layoutClasses = "md:col-span-2"; // Small images on right
+                }
+              }
+
+              return (
+                <motion.div
+                  key={home.id}
+                  variants={itemVariants}
+                  whileHover={{
+                    scale: 1.03,
+                    transition: { duration: 0.2 },
+                  }}
+                  className={`group relative overflow-hidden rounded-lg shadow-lg bg-background ${layoutClasses}`}
                 >
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                    src={home.image}
-                    alt={home.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                      <Users className="w-4 h-4 text-primary-foreground" />
-                      <span className="text-sm font-medium text-primary-foreground">
-                        {home.family}
-                      </span>
+                  <div
+                    className={`relative w-full overflow-hidden ${
+                      (!isOddGroup && positionInGroup === 0) ||
+                      (isOddGroup && positionInGroup === 3)
+                        ? "h-64 md:h-[32rem]"
+                        : "h-64"
+                    }`}
+                  >
+                    <div className="bg-green-500 h-[50%] w-full rounded-2xl">
+                      <motion.img
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                        src={home.image}
+                        alt={home.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+                      />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3
-                        className={`font-semibold mb-2 ${
-                          index % 6 === 0 || index % 6 === 3
-                            ? "text-2xl"
-                            : "text-xl"
-                        }`}
-                      >
-                        {home.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {home.description}
-                      </p>
+
+                    {/* hidden till hover */}
+                    <div className="absolute inset-0 shadow-[0.313rem_0.313rem_0_0.313rem_#fff] bg-gradient-to-t from-background/60 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-[1.25rem] border-[#020817] border-[1rem]">
+                      <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <Users className="w-4 h-4 text-primary-foreground" />
+                        <span className="text-sm font-medium text-primary-foreground">
+                          {home.family}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3
+                          className={`font-semibold mb-2 ${
+                            index % 6 === 0 || index % 6 === 3
+                              ? "text-2xl"
+                              : "text-xl"
+                          }`}
+                        >
+                          {home.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {home.description}
+                        </p>
+                      </div>
+                      <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[10vh] w-[10vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                        {" "}
+                        <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
+                          <ArrowUpRight className="text-3xl font-extrabold" />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           <motion.div
