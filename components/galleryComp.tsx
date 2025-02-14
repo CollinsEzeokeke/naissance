@@ -1,155 +1,12 @@
 "use client";
 
 import { easeOut, motion } from "framer-motion";
-import {
-  Heart,
-  Home,
-  Users,
-  Star,
-  ChevronRight,
-  Building,
-  Shield,
-  ArrowUpRight,
-} from "lucide-react";
-import { useEffect, useState } from "react";
+import { Heart, Home, Users, ChevronRight, ArrowUpRight } from "lucide-react";
 import { WorldMapDemo } from "./worldJam";
-
-interface HomeCard {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  family: string;
-}
-
-const galleryHomes: HomeCard[] = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "The Anderson Residence",
-    description: "A modern dream home that brings family together",
-    family: "The Andersons",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Casa Martinez",
-    description: "Where traditions meet modern comfort",
-    family: "The Martinez Family",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1512917774080-17f0baa2a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "The Smith Haven",
-    description: "Built with love, filled with memories",
-    family: "The Smiths",
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "The Park View Estate",
-    description: "Where nature meets luxury living",
-    family: "The Johnson Family",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Modern Family Haven",
-    description: "Contemporary design meets family comfort",
-    family: "The Williams Family",
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1600607687644-c94bf569e48f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Coastal Dream Home",
-    description: "Where ocean views meet luxury living",
-    family: "The Thompson Family",
-  },
-  {
-    id: 7,
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Urban Oasis",
-    description: "A peaceful retreat in the heart of the city",
-    family: "The Garcia Family",
-  },
-  {
-    id: 8,
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Sunset Villa",
-    description: "Where every evening feels magical",
-    family: "The Miller Family",
-  },
-  {
-    id: 9,
-    image:
-      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Garden Paradise",
-    description: "Living in harmony with nature",
-    family: "The Chen Family",
-  },
-  {
-    id: 10,
-    image:
-      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Mountain View Retreat",
-    description: "Where every morning brings inspiration",
-    family: "The Patel Family",
-  },
-  {
-    id: 11,
-    image:
-      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Lakeside Manor",
-    description: "Tranquil living by the water",
-    family: "The Wilson Family",
-  },
-  {
-    id: 12,
-    image:
-      "https://images.unsplash.com/photo-1600566752547-c06a0605567c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    title: "Forest Edge Estate",
-    description: "Where wilderness meets luxury",
-    family: "The Taylor Family",
-  },
-];
-
-const features = [
-  {
-    icon: Building,
-    title: "Custom Design",
-    description:
-      "Tailored architecture that reflects your unique style and needs",
-  },
-  {
-    icon: Shield,
-    title: "Quality Assurance",
-    description: "Premium materials and expert craftsmanship in every detail",
-  },
-  {
-    icon: Star,
-    title: "Satisfaction Guaranteed",
-    description: "Join our community of 1000+ satisfied homeowners",
-  },
-];
+// import IndividualBallHover from "./balls";
+import { features, displayedHomes } from "@/data/homedata";
 
 const Index = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showAllHomes, setShowAllHomes] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  console.log(isLoaded, showAllHomes);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -170,12 +27,6 @@ const Index = () => {
       },
     },
   };
-
-  const reorderHomes = (homes: HomeCard[]) => {
-    return homes;
-  };
-
-  const displayedHomes = reorderHomes(galleryHomes);
 
   return (
     <div className="min-h-screen bg-background">
@@ -203,6 +54,7 @@ const Index = () => {
             today and discover the stories of families who&apos;ve built their
             dreams with us
           </p>
+          {/* <IndividualBallHover /> */}
           <div className="flex items-center justify-center gap-2 mb-8">
             <motion.div
               initial={{ zIndex: 0, y: 0 }}
@@ -259,7 +111,7 @@ const Index = () => {
         className="py-16 bg-card relative h-[50vh]" // Changed to relative positioning and set fixed height
       >
         {/* Background Map Component */}
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full bg-black">
           <WorldMapDemo />
         </div>
 
@@ -307,41 +159,6 @@ const Index = () => {
           </motion.div>
 
           {/* motions rerenderer constantly........ */}
-
-          {/* <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-6 gap-8 auto-rows-auto"
-          >
-            {displayedHomes.map((home, index) => (
-              <motion.div
-                key={home.id}
-                variants={itemVariants}
-                whileHover={{
-                  scale: 1.03,
-                  transition: { duration: 0.2 },
-                }}
-                className={`group relative overflow-hidden rounded-lg shadow-lg bg-background ${
-                  index % 6 === 0
-                    ? "md:col-span-4 md:row-span-2"
-                    : index % 6 === 1 || index % 6 === 2
-                    ? "md:col-span-2"
-                    : index % 6 === 3
-                    ? "md:col-span-4 md:col-start-3 md:row-span-2"
-                    : index % 6 === 4 || index % 6 === 5
-                    ? "md:col-span-2"
-                    : "md:col-span-2"
-                }`}
-              >
-                <div
-                  className={`relative w-full overflow-hidden ${
-                    index % 6 === 0 || index % 6 === 3
-                      ? "h-64 md:h-[32rem]"
-                      : "h-64"
-                  }`}
-                > */}
 
           <motion.div
             variants={containerVariants}
@@ -446,10 +263,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <button
-              onClick={() => setShowAllHomes(true)}
-              className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary/10 transition-colors duration-300"
-            >
+            <button className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary/10 transition-colors duration-300">
               View All Homes
               <ChevronRight className="w-4 h-4 ml-2" />
             </button>

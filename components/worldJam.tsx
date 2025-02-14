@@ -3,7 +3,7 @@ import WorldMap from "@/components/ui/world-map";
 
 export function WorldMapDemo() {
   return (
-    <div className="dark:bg-primary bg-white w-full h-full">
+    <div className="w-full h-full">
       <WorldMap
         dots={[
           // FROM LAGOS
