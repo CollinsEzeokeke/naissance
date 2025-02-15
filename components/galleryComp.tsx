@@ -3,7 +3,6 @@
 import { easeOut, motion } from "framer-motion";
 import { Heart, Home, Users, ChevronRight, ArrowUpRight } from "lucide-react";
 import { WorldMapDemo } from "./worldJam";
-// import IndividualBallHover from "./balls";
 import { features, displayedHomes } from "@/data/homedata";
 
 const Index = () => {
@@ -27,6 +26,15 @@ const Index = () => {
       },
     },
   };
+
+  function getGroupInfo(current: number) {
+    const groupNumber = Math.ceil(current / 3);
+    return {
+      group: groupNumber,
+      position: ((current - 1) % 3) + 1, // Position in group (1-3)
+      isEvenGroup: groupNumber % 2 === 0, // Group parity check
+    };
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -54,7 +62,6 @@ const Index = () => {
             today and discover the stories of families who&apos;ve built their
             dreams with us
           </p>
-          {/* <IndividualBallHover /> */}
           <div className="flex items-center justify-center gap-2 mb-8">
             <motion.div
               initial={{ zIndex: 0, y: 0 }}
@@ -168,6 +175,8 @@ const Index = () => {
             className="grid grid-cols-1 md:grid-cols-6 gap-8 auto-rows-auto"
           >
             {displayedHomes.map((home, index) => {
+
+              const {group, position, isEvenGroup } = getGroupInfo(index + 1)
               // Calculate the position within each group of 6
               const groupIndex = Math.floor(index / 6);
               const positionInGroup = index % 6;
@@ -202,6 +211,7 @@ const Index = () => {
                     transition: { duration: 0.2 },
                   }}
                   className={`group relative overflow-hidden rounded-lg shadow-lg bg-background ${layoutClasses}`}
+                  onClick={() => console.log(getGroupInfo(index + 1))}
                 >
                   <div
                     className={`relative w-full overflow-hidden ${
@@ -210,6 +220,7 @@ const Index = () => {
                         ? "h-64 md:h-[32rem]"
                         : "h-64"
                     }`}
+                    // onClick={() => console.log(isOddGroup)}
                   >
                     <div className="bg-green-500 h-[50%] w-full rounded-2xl">
                       <motion.img
