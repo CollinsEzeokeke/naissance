@@ -3,7 +3,7 @@
 import { easeOut, motion } from "framer-motion";
 import { Heart, Home, Users, ChevronRight, ArrowUpRight } from "lucide-react";
 import { WorldMapDemo } from "./worldJam";
-import { features, displayedHomes } from "@/data/homedata";
+import { features, displayedHomes, HomeCard } from "@/data/homedata";
 
 const Index = () => {
   const containerVariants = {
@@ -27,16 +27,14 @@ const Index = () => {
     },
   };
 
-  console.log(displayedHomes, "this is the home being displayed");
+  // Function to chunk array into groups of 3
+  const chunkArray = (arr: HomeCard[], size: number) => {
+    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+      arr.slice(i * size, i * size + size)
+    );
+  };
 
-  function getGroupInfo(current: number) {
-    const groupNumber = Math.ceil(current / 3);
-    return {
-      group: groupNumber,
-      position: ((current - 1) % 3) + 1, // Position in group (1-3)
-      isEvenGroup: groupNumber % 2 === 0, // Group parity check
-    };
-  }
+  const HomeDisplay = chunkArray(displayedHomes, 3);
 
   return (
     <div className="min-h-screen bg-background">
@@ -64,50 +62,11 @@ const Index = () => {
             today and discover the stories of families who&apos;ve built their
             dreams with us
           </p>
+          {/* thripple dotted things in the top */}
           <div className="flex items-center justify-center gap-2 mb-8">
-            <motion.div
-              initial={{ zIndex: 0, y: 0 }}
-              animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, -5, 0],
-                zIndex: 10,
-                y: -10,
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                repeatType: "reverse",
-                type: "spring",
-                ease: easeOut(0.2),
-              }}
-              className="w-2 h-2 rounded-full bg-primary"
-            />
-            <motion.div
-              animate={{
-                scale: [1.1, 1, 1.1],
-                rotate: [0, -5, 5, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: 0.2,
-              }}
-              className="w-2 h-2 rounded-full bg-primary/80"
-            />
-            <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, -5, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: 0.4,
-              }}
-              className="w-2 h-2 rounded-full bg-primary/60"
-            />
+            <motion.div className="w-2 h-2 rounded-full bg-primary" />
+            <motion.div className="w-2 h-2 rounded-full bg-primary/80" />
+            <motion.div className="w-2 h-2 rounded-full bg-primary/60" />
           </div>
         </motion.div>
       </motion.section>
@@ -147,7 +106,8 @@ const Index = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="py-20 bg-card"
+        className="py-24 -my-20 bg-[#000000]"
+        // bg-card
       >
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
@@ -166,107 +126,231 @@ const Index = () => {
               Explore our collection of beautiful homes and happy families
             </p>
           </motion.div>
-
-          {/* motions rerenderer constantly........ */}
-
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             // md:grid-cols-6          grid grid-cols-6 gap-8 auto-rows-auto
-            className=" bg-pink-300 grid grid-cols-6 gap-8 auto-rows"
+            className="flex flex-col gap-8"
           >
-            {displayedHomes.map((home, index) => {
-              const { group, position, isEvenGroup } = getGroupInfo(index + 1);
-              const groupIndex = group;
-              const positionInGroup = position;
-              const isEven = isEvenGroup;
-              let layoutClasses = "";
-
-              if (
-                groupIndex % 2 === 0 &&
-                positionInGroup === 1 &&
-                isEven === true
-              ) {
-                //targets the even numbers
-                // bigger ones on the right
-                layoutClasses = "bg-green-500 col-span-4 row-span-4";
-              }
-              // bigger ones on the left
-              else if (
-                groupIndex % 2 !== 0 &&
-                positionInGroup === 1 &&
-                isEven === false
-              ) {
-                // col-start-2 col-span-2 row-span-2
-                layoutClasses = "col-span-4 row-span-2 bg-red-500 ";
-              } else if (positionInGroup === 2 || positionInGroup === 3) {
-                layoutClasses = "col-span-2 row-span-1  bg-blue-200";
-              }
-
-              return (
-                <motion.div
-                  key={home.id}
-                  variants={itemVariants}
-                  whileHover={{
-                    scale: 1.03,
-                    transition: { duration: 0.2 },
-                  }}
-                  // bg-background
-                  className={`group relative overflow-hidden rounded-lg shadow-lg ${layoutClasses}`}
-                  onClick={() => console.log(getGroupInfo(index + 1))}
-                >
-                  <div
-                    className={`relative w-full overflow-hidden h-64
+            {HomeDisplay.map((group, groupIndex) => (
+              <div key={groupIndex} className="flex gap-8 h-[600px]">
+                {groupIndex % 2 === 0 ? (
+                  //even items on the right
+                  <>
+                    <div className="w-1/3 flex flex-col gap-8">
+                      {group.slice(0, 2).map((home) => (
+                        <>
+                          <motion.div
+                            key={home.id}
+                            variants={itemVariants}
+                            whileHover={{
+                              scale: 1.03,
+                              transition: { duration: 0.2 },
+                            }}
+                            // bg-background
+                            className={`group relative overflow-hidden rounded-lg shadow-lg `}
+                          >
+                            <div
+                              className={`relative w-full overflow-hidden h-72
                     `}
-                    // onClick={() => console.log(isOddGroup)}
-                  >
-                    <div className="h-full w-full rounded-2xl">
-                      <motion.img
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.6 }}
-                        src={home.image}
-                        alt={home.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
-                      />
-                    </div>
-                    {/* should have three more images */}
+                            >
+                              <div className="h-full w-full rounded-2xl">
+                                <motion.img
+                                  whileHover={{ scale: 1.1 }}
+                                  transition={{ duration: 0.6 }}
+                                  src={home.image}
+                                  alt={home.title}
+                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+                                />
+                              </div>
+                            </div>
 
-                    {/* hidden till hover */}
-                    {/* bg-gradient-to-t from-background/60 via-background/20 to-transparent */}
-                    <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <Users className="w-4 h-4 text-primary-foreground" />
-                        <span className="text-sm font-medium text-primary-foreground">
-                          {home.family}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <h3
-                          className={`font-semibold mb-2 ${
-                            groupIndex === 1 || groupIndex === 3
-                              ? "text-2xl"
-                              : "text-xl"
-                          }`}
-                        >
-                          {home.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          {home.description}
-                        </p>
-                      </div>
-                      <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[5vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
-                        {" "}
-                        <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
-                          <ArrowUpRight className="text-3xl font-extrabold" />
-                        </div>
-                      </div>
+                            {/* this part is not visible until hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                              <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <Users className="w-4 h-4 text-primary-foreground" />
+                                <span className="text-sm font-medium text-primary-foreground">
+                                  {home.family}
+                                </span>
+                              </div>
+                              <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 className={`font-black mb-2 text-2xl`}>
+                                  {home.title}
+                                </h3>
+                                <div className="w-2/3">
+                                  <p className="text-sm text-muted-foreground">
+                                    {home.description}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[7vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                                {" "}
+                                <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
+                                  <ArrowUpRight className="text-3xl font-extrabold" />
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </>
+                      ))}
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+
+                    {/* this is the part where the user has them bigger images for easier access */}
+                    {group[2] && (
+                      <motion.div
+                        variants={itemVariants}
+                        whileHover={{
+                          transition: { duration: 0.2 },
+                        }}
+                        // bg-background
+                        className="group relative overflow-hidden rounded-lg shadow-lg w-2/3 group"
+                      >
+                        <div className="h-full w-full rounded-2xl">
+                          <motion.img
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.6 }}
+                            src={group[2].image}
+                            alt={group[2].title}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+                          />
+                        </div>
+                        {/* here is the part that is very important in the place i need */}
+
+                        <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                          <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <Users className="w-4 h-4 text-primary-foreground" />
+                            <span className="text-sm font-medium text-primary-foreground">
+                              {group[2].family}
+                            </span>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 className={`mb-2 text-4xl font-black`}>
+                              {group[2].title}
+                            </h3>
+                            <p className="text-lg text-muted-foreground">
+                              {group[2].description}
+                            </p>
+                          </div>
+                          <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-40 w-40 flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                            {" "}
+                            <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
+                              <ArrowUpRight className="text-3xl font-extrabold" />
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {group[0] && (
+                      <motion.div
+                        variants={itemVariants}
+                        whileHover={{
+                          transition: { duration: 0.2 },
+                        }}
+                        // bg-background
+                        className="group relative overflow-hidden rounded-lg shadow-lg w-2/3 group"
+                      >
+                        <div className="h-full w-full rounded-2xl">
+                          <motion.img
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.6 }}
+                            src={group[0].image}
+                            alt={group[0].title}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+                          />
+                        </div>
+                        {/* here is the part that is very important in the place i need */}
+
+                        <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                          <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <Users className="w-4 h-4 text-primary-foreground" />
+                            <span className="text-sm font-medium text-primary-foreground">
+                              {group[0].family}
+                            </span>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 className={`mb-2 text-4xl font-black`}>
+                              {group[0].title}
+                            </h3>
+                            <p className="text-lg text-muted-foreground">
+                              {group[0].description}
+                            </p>
+                          </div>
+                          <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-40 w-40 flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                            {" "}
+                            <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
+                              <ArrowUpRight className="text-3xl font-extrabold" />
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    <div className="w-1/3 flex flex-col gap-8">
+                      {group.slice(1, 3).map((home) => (
+                        <>
+                          <motion.div
+                            key={home.id}
+                            variants={itemVariants}
+                            whileHover={{
+                              scale: 1.03,
+                              transition: { duration: 0.2 },
+                            }}
+                            // bg-background
+                            className={`group relative overflow-hidden rounded-lg shadow-lg `}
+                          >
+                            <div
+                              className={`relative w-full overflow-hidden h-72
+                    `}
+                            >
+                              <div className="h-full w-full rounded-2xl">
+                                <motion.img
+                                  whileHover={{ scale: 1.1 }}
+                                  transition={{ duration: 0.6 }}
+                                  src={home.image}
+                                  alt={home.title}
+                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+                                />
+                              </div>
+                            </div>
+
+                            {/* this part is not visible until hover */}
+                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                              <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <Users className="w-4 h-4 text-primary-foreground" />
+                                <span className="text-sm font-medium text-primary-foreground">
+                                  {home.family}
+                                </span>
+                              </div>
+                              <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 className={`font-black mb-2 text-2xl`}>
+                                  {home.title}
+                                </h3>
+                                <div className="w-2/3">
+                                  <p className="text-sm text-muted-foreground">
+                                    {home.description}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[7vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                                {" "}
+                                <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
+                                  <ArrowUpRight className="text-3xl font-extrabold" />
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
           </motion.div>
 
           <motion.div
@@ -289,7 +373,7 @@ const Index = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="py-20 bg-gradient-to-b from-accent to-background"
+        className="py-32 bg-gradient-to-b from-[#000000] to-background"
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -329,7 +413,7 @@ const Index = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="px-4 py-20 text-center bg-gradient-to-b from-card to-background"
+        className="px-4 py-20 text-center bg-gradient-to-b from-background to-card"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

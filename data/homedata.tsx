@@ -5,7 +5,7 @@ import {
   } from "lucide-react";
 
 
-interface HomeCard {
+export interface HomeCard {
     id: number;
     image: string;
     title: string;
