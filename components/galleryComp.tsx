@@ -27,7 +27,7 @@ const Index = () => {
     },
   };
 
-  console.log(displayedHomes, "this is the home being displayed")
+  console.log(displayedHomes, "this is the home being displayed");
 
   function getGroupInfo(current: number) {
     const groupNumber = Math.ceil(current / 3);
@@ -174,54 +174,36 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-6 gap-8 auto-rows-auto bg-pink-300"
+            // md:grid-cols-6          grid grid-cols-6 gap-8 auto-rows-auto
+            className=" bg-pink-300 grid grid-cols-6 gap-8 auto-rows"
           >
             {displayedHomes.map((home, index) => {
               const { group, position, isEvenGroup } = getGroupInfo(index + 1);
-              // Calculate the position within each group of 6
               const groupIndex = group;
               const positionInGroup = position;
-
-              // Determine if this is an odd or even group
               const isEven = isEvenGroup;
-
-              // Define the layout classes based on position
               let layoutClasses = "";
-              // if (isOddGroup === false) {
-              //   // Odd groups: large image on right, small ones on left
-              //   if (positionInGroup === 1 ) {
-              //     layoutClasses = "md:col-span-4 md:row-span-2"; // Large image
-              //   } else if (positionInGroup === 2 || positionInGroup === 3) {
-              //     layoutClasses = "md:col-span-2 md:col-start-1"; // Small images on left
-              //   }
-              // } else {
-              //   // Even groups: large image on left, small ones on right
-              //   if (positionInGroup === 1 && groupIndex % 2 === 0) {
-              //     layoutClasses = "md:col-span-4 md:row-span-2"; // Large image
-              //   } else if (positionInGroup === 2 || positionInGroup === 3) {
-              //     layoutClasses = "md:col-span-2"; // Small images on right
-              //   }
-              // }
 
-              if (groupIndex % 2 === 0 && positionInGroup === 1 && isEven === true) {  //targets the even numbers
-
+              if (
+                groupIndex % 2 === 0 &&
+                positionInGroup === 1 &&
+                isEven === true
+              ) {
+                //targets the even numbers
                 // bigger ones on the right
-                  layoutClasses = "bg-green-500 md:col-span-4 md:row-span-2"
-              } 
-              
-              // bigger ones on the left
-              else if (groupIndex % 2 !== 0 && positionInGroup === 1 && isEven === false) {
-                // col-start-2 col-span-2 row-span-2
-                layoutClasses = "col-span-2 row-span-2 bg-red-500";
-              } else if (positionInGroup === 2 || positionInGroup === 3) {
-                layoutClasses = "col-span-1";
+                layoutClasses = "bg-green-500 col-span-4 row-span-4";
               }
-              // ${
-              //   (!isOddGroup && positionInGroup === 0) ||
-              //   (isOddGroup && positionInGroup === 3)
-              //     ? "h-64 md:h-[32rem]"
-              //     : "h-64"
-              // }
+              // bigger ones on the left
+              else if (
+                groupIndex % 2 !== 0 &&
+                positionInGroup === 1 &&
+                isEven === false
+              ) {
+                // col-start-2 col-span-2 row-span-2
+                layoutClasses = "col-span-4 row-span-2 bg-red-500 ";
+              } else if (positionInGroup === 2 || positionInGroup === 3) {
+                layoutClasses = "col-span-2 row-span-1  bg-blue-200";
+              }
 
               return (
                 <motion.div
@@ -240,19 +222,20 @@ const Index = () => {
                     `}
                     // onClick={() => console.log(isOddGroup)}
                   >
-                    {/* <div className="h-[50%] w-full rounded-2xl"> */}
-                      {/* <motion.img
+                    <div className="h-full w-full rounded-2xl">
+                      <motion.img
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.6 }}
                         src={home.image}
                         alt={home.title}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
-                      /> */}
-                    {/* </div> */}
-                      {/* should have three more images */}
+                      />
+                    </div>
+                    {/* should have three more images */}
 
                     {/* hidden till hover */}
-                    <div className="absolute inset-0 shadow-[0.313rem_0.313rem_0_0.313rem_#fff] bg-gradient-to-t from-background/60 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-[1.25rem] border-[#020817] border-[1rem]">
+                    {/* bg-gradient-to-t from-background/60 via-background/20 to-transparent */}
+                    <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute top-4 right-4 px-3 py-1.5 bg-primary/90 rounded-full flex items-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                         <Users className="w-4 h-4 text-primary-foreground" />
                         <span className="text-sm font-medium text-primary-foreground">
@@ -262,7 +245,7 @@ const Index = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-6 text-card-foreground transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3
                           className={`font-semibold mb-2 ${
-                            groupIndex === 1 || groupIndex === 3 
+                            groupIndex === 1 || groupIndex === 3
                               ? "text-2xl"
                               : "text-xl"
                           }`}
@@ -273,7 +256,7 @@ const Index = () => {
                           {home.description}
                         </p>
                       </div>
-                      <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[10vh] w-[10vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                      <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[5vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
                         {" "}
                         <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
                           <ArrowUpRight className="text-3xl font-extrabold" />
@@ -293,7 +276,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <button className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary/10 transition-colors duration-300" >
+            <button className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary/10 transition-colors duration-300">
               View All Homes
               <ChevronRight className="w-4 h-4 ml-2" />
             </button>
