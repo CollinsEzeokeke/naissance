@@ -106,7 +106,7 @@ const Index = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="py-24 -my-20 bg-[#000000]"
+        className="py-24 -my-20 bg-[#000000]/65"
         // bg-card
       >
         <div className="max-w-7xl mx-auto px-4">
@@ -185,7 +185,7 @@ const Index = () => {
                                   </p>
                                 </div>
                               </div>
-                              <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[7vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                              <div className="bg-[#010308] text-primary-foreground absolute right-0 bottom-0 h-[7vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
                                 {" "}
                                 <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
                                   <ArrowUpRight className="text-3xl font-extrabold" />
@@ -233,7 +233,7 @@ const Index = () => {
                               {group[2].description}
                             </p>
                           </div>
-                          <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-40 w-40 flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                          <div className="bg-[#010308] text-primary-foreground absolute right-0 bottom-0 h-40 w-40 flex items-center justify-center rounded-tl-[2rem] corner-effect">
                             {" "}
                             <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
                               <ArrowUpRight className="text-3xl font-extrabold" />
@@ -280,7 +280,7 @@ const Index = () => {
                               {group[0].description}
                             </p>
                           </div>
-                          <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-40 w-40 flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                          <div className="bg-[#010308] text-primary-foreground absolute right-0 bottom-0 h-40 w-40 flex items-center justify-center rounded-tl-[2rem] corner-effect">
                             {" "}
                             <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
                               <ArrowUpRight className="text-3xl font-extrabold" />
@@ -336,7 +336,7 @@ const Index = () => {
                                   </p>
                                 </div>
                               </div>
-                              <div className="bg-[#020817] text-primary-foreground absolute right-0 bottom-0 h-[7vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
+                              <div className="bg-[#010308] text-primary-foreground absolute right-0 bottom-0 h-[7vh] w-[8vh] flex items-center justify-center rounded-tl-[2rem] corner-effect">
                                 {" "}
                                 <div className="bg-primary/70 h-1/2 w-1/2 flex items-center justify-center rounded-[4rem] ">
                                   <ArrowUpRight className="text-3xl font-extrabold" />

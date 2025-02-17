@@ -41,7 +41,7 @@ export default function ScrollZoomReveal() {
   const newSectionBlur = useTransform(scrollYProgress, [0.7, 1], [5, 0]);
 
   return (
-    <div ref={containerRef} className="relative min-h-[700vh] bg-[#151F31]">
+    <div ref={containerRef} className="relative min-h-[700vh] bg-blue-500/35">
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Zoom section */}
         <motion.div
@@ -49,7 +49,8 @@ export default function ScrollZoomReveal() {
             scale,
             opacity: zoomOpacity,
           }}
-          className="w-full h-full flex items-center justify-center bg-gradient-to-r from-[#1A273C] to-secondary"
+          // bg-gradient-to-r from-[#1A273C] to-secondary
+          className="w-full h-full flex items-center justify-center bg-gradient-to-tr from-blue-500 via-background to-primary"
         >
           <div className="text-center text-white h-full w-full flex justify-center items-center">
             <h1 className="text-4xl font-bold mb-4">

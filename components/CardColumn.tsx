@@ -52,7 +52,6 @@ const CardColumn = ({ columnCards, columnIndex }: CardColumnProps) => {
           }
         }}
         viewport={{ once: false, margin: "-20%" }}
-        // className="gap-8 px-10 ml-20 perspective-1000 grid grid-rows-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
         className="gap-8 px-4 sm:px-6 md:px-8 perspective-1000 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
       >
         {columnCards.map((card, cardIndex) => (

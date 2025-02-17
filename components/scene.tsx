@@ -6,7 +6,7 @@ export function DisplayHome() {
   return (
     <div className="w-full h-full">
       <Canvas
-        className="min-h-[60rem] w-full text-black"
+        className="h-[70vh] w-[70vw] text-black"
         camera={{
           position: [-1, 0.2, 0],
           //   rotation: [0, -Math.PI / 8, 0],

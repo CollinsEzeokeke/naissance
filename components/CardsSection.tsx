@@ -11,8 +11,9 @@ const CardsSection = () => {
   const columns = createColumns(cards);
   // bg-gradient-to-b from-background to-secondary
   return (
+    // bg-gradient-to-b from-background to-secondary
     <div
-      className="relative min-h-[500vh] pb-0 pt-0 bg-gradient-to-b from-background to-secondary"
+      className="relative min-h-[300vh] pb-0 pt-0 bg-[#020817]"
       ref={containerRef}
     >
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_120%,hsl(var(--primary)/0.1),transparent)]" />
@@ -78,7 +79,7 @@ const CardsSection = () => {
       </div>
 
       <div className="flex justify-center h-full w-full">
-        <div className="relative perspective-1000">
+        <div className="relative perspective-1000 w-5/6">
           {columns.map((columnCards, columnIndex) => (
             <CardColumn
               key={columnIndex}

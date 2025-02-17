@@ -3,7 +3,7 @@ import TextGradientScroll from "./ui/scrollGradient";
 
 export default function Team() {
   return (
-    <div className="h-screen w-screen flex items-center bg-[#20304A]">
+    <div className="h-screen w-screen flex items-center bg-gradient-to-bl from-[#061229] via-card to-blue-500 shadow-lg">
       <div className="w-1/2 h-full flex flex-col justify-end">
         <Professionals />
       </div>
