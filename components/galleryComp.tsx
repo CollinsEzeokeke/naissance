@@ -28,26 +28,24 @@ const Index = () => {
     },
   };
 
-  const [visibleItems, setVisibleItems] = useState(12);
-  // const [dispatch, setDispatch] = useState<HomeCard[]>([]);
 
-  const loadMore = () => {
-    setVisibleItems((prev) => prev + 12);
-  };
-  // useEffect(() => {
- 
-    // setDispatch(dispatch);
-  // }, [visibleItems]);
-   const dispatch = displayedHomes.slice(0, visibleItems);
-    console.log(visibleItems);
   // Function to chunk array into groups of 3
   const chunkArray = (arr: HomeCard[], size: number) => {
     return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
       arr.slice(i * size, i * size + size)
     );
   };
+  const [visibleItems, setVisibleItems] = useState(12);
 
-  const HomeDisplay = chunkArray(dispatch, 3);
+  const loadMore = () => {
+  // Ensure we don't exceed available items
+  setVisibleItems(prev => Math.min(prev + 12, displayedHomes.length));
+  };
+  
+  // Get current items and chunk them
+  const currentItems = displayedHomes.slice(0, visibleItems);
+  const HomeDisplay = chunkArray(currentItems, 3);
+  console.log(HomeDisplay);
 
   return (
     <div className="min-h-screen bg-background">
