@@ -1,6 +1,6 @@
 "use client";
 
-import { easeOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Heart, Home, Users, ChevronRight, ArrowUpRight } from "lucide-react";
 import { WorldMapDemo } from "./worldJam";
 import { features, displayedHomes, HomeCard } from "@/data/homedata";
