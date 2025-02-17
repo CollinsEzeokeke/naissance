@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Heart, Home, Users, ChevronRight, ArrowUpRight } from "lucide-react";
 import { WorldMapDemo } from "./worldJam";
 import { features, displayedHomes, HomeCard } from "@/data/homedata";
+import { useEffect, useState } from "react";
 
 const Index = () => {
   const containerVariants = {
@@ -27,6 +28,18 @@ const Index = () => {
     },
   };
 
+  const [visibleItems, setVisibleItems] = useState(12);
+  const [dispatch, setDispatch] = useState<HomeCard[]>([]);
+
+  const loadMore = () => {
+    setVisibleItems((prev) => prev + 12);
+  };
+  useEffect(() => {
+    const dispatch = displayedHomes.slice(0, visibleItems);
+    console.log(visibleItems);
+    setDispatch(dispatch);
+  }, [visibleItems]);
+
   // Function to chunk array into groups of 3
   const chunkArray = (arr: HomeCard[], size: number) => {
     return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
@@ -34,7 +47,7 @@ const Index = () => {
     );
   };
 
-  const HomeDisplay = chunkArray(displayedHomes, 3);
+  const HomeDisplay = chunkArray(dispatch, 3);
 
   return (
     <div className="min-h-screen bg-background">
@@ -360,7 +373,10 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <button className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary/10 transition-colors duration-300">
+            <button
+              className="inline-flex items-center px-6 py-3 text-sm font-medium text-primary border-2 border-primary rounded-lg hover:bg-primary/10 transition-colors duration-300"
+              onClick={loadMore}
+            >
               View All Homes
               <ChevronRight className="w-4 h-4 ml-2" />
             </button>
