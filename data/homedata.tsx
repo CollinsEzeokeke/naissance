@@ -110,6 +110,30 @@ export interface HomeCard {
       description: "Where wilderness meets luxury",
       family: "The Taylor Family",
     },
+    {
+      id: 10,
+      image:
+        "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      title: "Mountain View Retreat",
+      description: "Where every morning brings inspiration",
+      family: "The Patel Family",
+    },
+    {
+      id: 11,
+      image:
+        "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      title: "Lakeside Manor",
+      description: "Tranquil living by the water",
+      family: "The Wilson Family",
+    },
+    {
+      id: 12,
+      image:
+        "https://images.unsplash.com/photo-1600566752547-c06a0605567c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      title: "Forest Edge Estate",
+      description: "Where wilderness meets luxury",
+      family: "The Taylor Family",
+    },
   ];
   
   export const features = [

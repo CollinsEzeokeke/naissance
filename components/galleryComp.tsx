@@ -29,17 +29,17 @@ const Index = () => {
   };
 
   const [visibleItems, setVisibleItems] = useState(12);
-  const [dispatch, setDispatch] = useState<HomeCard[]>([]);
+  // const [dispatch, setDispatch] = useState<HomeCard[]>([]);
 
   const loadMore = () => {
     setVisibleItems((prev) => prev + 12);
   };
-  useEffect(() => {
-    const dispatch = displayedHomes.slice(0, visibleItems);
+  // useEffect(() => {
+ 
+    // setDispatch(dispatch);
+  // }, [visibleItems]);
+   const dispatch = displayedHomes.slice(0, visibleItems);
     console.log(visibleItems);
-    setDispatch(dispatch);
-  }, [visibleItems]);
-
   // Function to chunk array into groups of 3
   const chunkArray = (arr: HomeCard[], size: number) => {
     return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>

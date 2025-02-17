@@ -85,67 +85,66 @@ export const cards: Card[] = [
     image:
       "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
   },
+];
+
+const services = [
   {
-    id: 13,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Custom Home Design",
+    description:
+      "Tailored architectural plans to bring your dream home to life.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 14,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Construction",
+    description:
+      "Expert building services with top-quality materials and craftsmanship.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 15,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Interior Design",
+    description:
+      "Professional interior styling to create your perfect living spaces.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 16,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Smart Home Integration",
+    description:
+      "Cutting-edge technology for a modern, efficient home experience.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 17,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Landscaping",
+    description:
+      "Beautiful outdoor spaces that complement your home's architecture.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 18,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Furnishing",
+    description:
+      "Curated furniture selection to complete your home's aesthetic.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 19,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Energy Efficiency",
+    description:
+      "Sustainable solutions for an eco-friendly and cost-effective home.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 20,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Home Automation",
+    description: "Advanced systems for seamless control of your entire home.",
+    image: "/placeholder.svg?height=400&width=600",
   },
   {
-    id: 21,
-    title: "Security Systems",
-    description: "State-of-the-art home security solutions",
-    image:
-      "https://images.unsplash.com/photo-1557063673-0493e05da49f?q=80&w=400&h=300&fit=crop",
+    title: "Custom Kitchens",
+    description:
+      "Bespoke kitchen designs tailored to your culinary needs and style.",
+    image: "/placeholder.svg?height=400&width=600",
+  },
+  {
+    title: "Luxury Bathrooms",
+    description:
+      "Spa-like bathroom retreats with premium fixtures and finishes.",
+    image: "/placeholder.svg?height=400&width=600",
   },
 ];
