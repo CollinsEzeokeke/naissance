@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss'
-import animate from "tailwindcss-animate"
+import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: ["class"],
@@ -7,7 +7,7 @@ const config: Config = {
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}"
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -60,11 +60,26 @@ const config: Config = {
           "0%": { transform: "scale(1)" },
           "100%": { transform: "scale(1.1)" },
         },
+        typewriter: {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
+        blink: {
+          from: { "border-right-color": "transparent" },
+          to: { "border-right-color": "black" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         float: "float 5s ease-in-out infinite",
         zoomIn: "zoomIn 0.3s ease-out forwards",
         "subtle-pulse": "subtle-pulse 4s ease-in-out infinite",
+        typewriter: 'typewriter 2s steps(20) forwards',
+        blink: 'blink 0.8s infinite',
+        'fade-in-up': 'fade-in-up 0.5s ease-out forwards'
       },
     },
   },
@@ -74,9 +89,9 @@ const config: Config = {
     "animate-[bounce_0.5s_ease-in-out_infinite]",
     "animate-[zoomIn_0.3s_ease-out_forwards]",
   ],
-} 
+};
 
-export default config
+export default config;
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");

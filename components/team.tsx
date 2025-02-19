@@ -1,3 +1,4 @@
+import ElementScroolGradient from "./elementScrollGradient";
 import { Professionals } from "./professionals";
 import TextGradientScroll from "./ui/scrollGradient";
 
@@ -16,11 +17,16 @@ export default function Team() {
           />
         </h2>
         <p className="text-2xl leading-relaxed text-slate-400">
+         <ElementScroolGradient textOpacity="soft">
+         <p>
           For a company that wishes to offer the best, we ourselves need to have
           the best team Planet Earth can offer to make our claim possible. We
           have the best engineers, developers, programmers, and other
           professionals who work devotedly and tirelessly to see a happy home
           being created.
+          
+          </p> 
+          </ElementScroolGradient> 
         </p>
       </div>
     </div>
