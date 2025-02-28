@@ -22,7 +22,7 @@ export default function ScrollZoomReveal() {
   const blankScreenOpacity = useTransform(
     scrollYProgress,
     [0.4, 0.5, 0.6],
-    [0, 1, 0]
+    [0, 1, 0] 
   );
 
   // New section reveal and enhancement
